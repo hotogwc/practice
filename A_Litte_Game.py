@@ -1,45 +1,48 @@
 """
 Author: Richard Davy
 Date: 08/17/2013
-File: ex36_debuggedDesign
-Exercise 36: Designing and Debugging
+File: A little game
 """
 
-from sys import exit
+from sys import exit #We use the import sys here to import exit() so that the game can be exited 
 
-def cavernous_caves():
-    count = 0
-    items = []
+def cavernous_caves():	
+    count = 0 #set count to zero
+    items = [] #creation of the items list
+
     print """Welcome to the Cavernous Caves, the last place
 you shall see before your death... If of course you make the 
 wrong decision"""
+    
     print """There are so many things you can find in a 
 cave, Who knows what you might find."""
+
     print """These are the things you can do, 1) You can 
 scavenge, 2) You can leave; We prefer you to leave and leave our treasure alone """
     
     choice = raw_input("What be your choice... ")
-    choice = choice.lower()
+    choice = choice.lower() #I have used the .lower() method after every raw_input() so as to prevent the imperfect user narrative and make every input lowercase
     
     if choice == "1":
         print "So be it. These are the items you can carry with you"
+
         print """1)Rubies, 2)Emeralds, 3)Diamonds, 
 4)Sapphires and that is all NO GOLD!!! NO FORBIDDEN 
 TREASURE!!! AND BY NO MEANS NO CHOCOLATE (its
 poisoned) You may only carry three items from the cave!!!"""
         
         
-        while count < 3:
+        while count < 3: #Here I limit the availability of the users take in the cave to three items
             jewels = raw_input("Proceed but be ware... ")
-            jewels = jewels.lower()
-            items.append(jewels)
-            count += 1
+            jewels = jewels.lower() 
+            items.append(jewels) #The .append() method is used to put the items into the users list
+            count += 1 #This is our iterative function to take count from 0 to 3 
         else:
             print "So you're taking my", items
             if "gold" in items or "forbidden" in items:
                 die("I told you not to take the gold or the forbidden treasure you thieving swine... You will now die!!! ")
             elif "chocolate" in items:
-                die("You are now poisoned for your pitiful sweet tooth...")
+                die("You are now poisoned for your pitiful sweet tooth...") #Throughout the code you will see this call to the function die() with this the game jumps to this function and exits delivering the message in the parameters
             else:
                 pass
             die("You are greedy but obedient... ")
@@ -57,6 +60,7 @@ def damsels_paradise():
     print """You have found Damsels Paradise where there are
 many beautiful sirens waiting to gouge out your eyes and 
 break your limbs!!!"""
+
     print """You have the unique opportunity of being 
 served to the fullness of your dreams, Just ask the 
 girls for what you want!"""
@@ -107,9 +111,11 @@ you need to gather these things but beware Zombies are everywhere"""
         print "You are so indecisive and that will cost you... "	
         die("You have been eaten by a zombie!")
     
-def start():
+def start(): #This is the start of our game, I typed this one a bit backwards mainly because I typed this and the die function first and then added the other functions of the game.
     print "You have made it to the land of the lost."
+
     print "You are on the only road in the land."
+
     print """This road is more of a trail but it has a 
 a distinct set of three paths, one to the left, one to 
 the right, and one in the center. Which one do you take?"""
@@ -127,7 +133,7 @@ the right, and one in the center. Which one do you take?"""
         die("Indecisive half twits are all bludgeoned by the beast of the dead... bruhahahahaha!!!")
 
 
-def die(why):
+def die(why): #This is our exiting function that exits the game
     print why, "Good Job!!"
     exit(0)
 	
